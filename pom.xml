@@ -22,11 +22,25 @@
 			<artifactId>mahout-core</artifactId>
 			<version>${mahout.version}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.mahout</groupId>
+			<artifactId>mahout-examples</artifactId>
+			<version>${mahout.version}</version>
+		</dependency>
+		
 
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>${slf4j.version}</version>
+		</dependency>
+
+		<!-- mysql -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.10</version>
 		</dependency>
 
 		<dependency>
