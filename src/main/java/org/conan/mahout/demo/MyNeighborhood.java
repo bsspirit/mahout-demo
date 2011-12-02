@@ -10,12 +10,12 @@ import org.apache.mahout.cf.taste.similarity.UserSimilarity;
 public class MyNeighborhood {
 
     public static UserNeighborhood getNearestN(DataModel m, UserSimilarity s, int num) throws TasteException {
-        System.out.println("相邻选择: NearestNUser");
+        System.out.println("相邻算法: NearestNUser");
         return new NearestNUserNeighborhood(num, s, m);
     }
 
     public static UserNeighborhood getThreshold(DataModel m, UserSimilarity s, int num) throws TasteException {
-        System.out.println("相邻选择: Threshold");
+        System.out.println("相邻算法: Threshold");
         return new ThresholdUserNeighborhood(num, s, m);
     }
 
