@@ -10,7 +10,7 @@ import org.apache.mahout.cf.taste.impl.eval.GenericRecommenderIRStatsEvaluator;
 import org.apache.mahout.cf.taste.impl.model.GenericBooleanPrefDataModel;
 import org.apache.mahout.cf.taste.impl.neighborhood.NearestNUserNeighborhood;
 import org.apache.mahout.cf.taste.impl.recommender.GenericBooleanPrefUserBasedRecommender;
-import org.apache.mahout.cf.taste.impl.similarity.TanimotoCoefficientSimilarity;
+import org.apache.mahout.cf.taste.impl.similarity.EuclideanDistanceSimilarity;
 import org.apache.mahout.cf.taste.model.DataModel;
 import org.apache.mahout.cf.taste.neighborhood.UserNeighborhood;
 import org.apache.mahout.cf.taste.recommender.Recommender;
@@ -28,7 +28,7 @@ class LibimsetiIREvalRunner {
         RecommenderBuilder recommenderBuilder = new RecommenderBuilder() {
             @Override
             public Recommender buildRecommender(DataModel model) throws TasteException {
-                UserSimilarity similarity = new TanimotoCoefficientSimilarity(model);
+                UserSimilarity similarity = new EuclideanDistanceSimilarity(model);//new TanimotoCoefficientSimilarity(model);
                 UserNeighborhood neighborhood = new NearestNUserNeighborhood(2, similarity, model);
                 return new GenericBooleanPrefUserBasedRecommender(model, neighborhood, similarity);
             }

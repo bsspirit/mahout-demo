@@ -1,5 +1,7 @@
 package org.conan.mahout.demo;
 
+import mia.recommender.Init;
+
 import org.apache.mahout.cf.taste.eval.DataModelBuilder;
 import org.apache.mahout.cf.taste.eval.IRStatistics;
 import org.apache.mahout.cf.taste.eval.RecommenderBuilder;
@@ -16,7 +18,8 @@ import org.apache.mahout.cf.taste.similarity.UserSimilarity;
 public class Demo1 {
     
     public static void run() throws Exception{
-        DataModel m1 = MyDataModel.getPrefDataByFile();
+//        DataModel m1 = MyDataModel.getPrefDataByFile();
+        DataModel m1 = Init.getRatings();
         demo1(m1);
         demo2(m1);
         prefEvaluate(m1);
@@ -44,10 +47,10 @@ public class Demo1 {
         UserSimilarity s = MySimilarity.getPearsonCorrelation(m);
         UserNeighborhood n = MyNeighborhood.getNearestN(m, s, 2);
         RecommenderBuilder rb = MyRecommender.userBuilder(s, n);
-        MyRecommender.showItems(rb.buildRecommender(m).recommend(1, 1));
+        MyRecommender.showItems(rb.buildRecommender(m).recommend(26, 1));
 
         RecommenderEvaluator e = new AverageAbsoluteDifferenceRecommenderEvaluator();
-        double score = e.evaluate(rb, null, m, 0.7, 1.0);// testing data, all
+        double score = e.evaluate(rb, null, m, 0.9, 1.0);// testing data, all
                                                          // data
         System.out.println("算法得分: " + score);
         System.out.println();
@@ -60,11 +63,11 @@ public class Demo1 {
         UserSimilarity s = MySimilarity.getPearsonCorrelation(m);
         UserNeighborhood n = MyNeighborhood.getNearestN(m, s, 2);
         RecommenderBuilder rb = MyRecommender.userBuilder(s, n);
-        MyRecommender.showItems(rb.buildRecommender(m).recommend(1, 1));
+        MyRecommender.showItems(rb.buildRecommender(m).recommend(26, 1));
 
         // RandomUtils.useTestSeed();
         RecommenderEvaluator e = new RMSRecommenderEvaluator();
-        double score = e.evaluate(rb, null, m, 0.7, 1.0);// testing data, all
+        double score = e.evaluate(rb, null, m, 0.7,0.3);// testing data, all
                                                          // data
         System.out.println("算法得分: " + score);
 
@@ -81,7 +84,7 @@ public class Demo1 {
         // 算法评估
         RecommenderBuilder rb = MyRecommender.userBuilder(s, n);
         RecommenderIRStatsEvaluator e = new GenericRecommenderIRStatsEvaluator();
-        IRStatistics stats = e.evaluate(rb, null, m, null, 1, GenericRecommenderIRStatsEvaluator.CHOOSE_THRESHOLD, 1.0);
+        IRStatistics stats = e.evaluate(rb, null, m, null, 1, GenericRecommenderIRStatsEvaluator.CHOOSE_THRESHOLD, 1);
         System.out.println("查准率 : " + stats.getPrecision());
         System.out.println("全查率 : " + stats.getRecall());
 

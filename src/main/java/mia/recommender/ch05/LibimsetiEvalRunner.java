@@ -13,7 +13,8 @@ import org.apache.mahout.cf.taste.recommender.Recommender;
 
 class LibimsetiEvalRunner {
 
-    // 0.8855421686746989
+    //all: 0.8855421686746989
+    //50000: 1.7777777777777777
 
     private LibimsetiEvalRunner() {
     }
@@ -31,6 +32,9 @@ class LibimsetiEvalRunner {
                 }
             }
         };
+        Recommender r = recommenderBuilder.buildRecommender(model);
+        r.recommend(26, 1);
+        
         double score = evaluator.evaluate(recommenderBuilder, null, model, 0.95, 0.1);
         System.out.println(score);
     }

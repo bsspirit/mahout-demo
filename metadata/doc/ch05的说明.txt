@@ -1,0 +1,14 @@
+准备：
+1. 下载libimseti的数据包
+2. 提取样例userid<50000的数据，ratings_u50000.dat, gender_u50000.dat
+
+关键字：
+1. AverageAbsoluteDifferenceRecommenderEvaluator: 平均差值法(0)
+2. EuclideanDistanceSimilarity:                   欧几里得几何距离相似(1)
+3. NearestNUserNeighborhood:                      最近邻居(个数)
+4. ThresholdUserNeighborhood:                     边界邻居(百分数)
+
+程序分析：(userid<50000)
+1. EuclideanDistanceSimilarity
+2. NearestNUserNeighborhood({count:2})
+3. AverageAbsoluteDifferenceRecommenderEvaluator({training:0.95, all:0.1}) => [1.0769230769230769,2.357142857142857]

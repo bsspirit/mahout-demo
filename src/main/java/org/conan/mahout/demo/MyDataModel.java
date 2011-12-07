@@ -23,7 +23,7 @@ import org.apache.mahout.cf.taste.model.PreferenceArray;
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
 public class MyDataModel {
-
+    
     public static DataModel getPrefDataByFile() throws Exception {
         System.out.println("数据源: PrefDataByFile");
         String data = "metadata/data/data1.csv";

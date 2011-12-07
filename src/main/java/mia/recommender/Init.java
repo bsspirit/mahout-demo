@@ -25,14 +25,18 @@ public class Init {
     }
     
     public static DataModel getRatings() throws IOException {
-        DataModel model = new FileDataModel(new File("metadata/data/libimseti/ratings.dat"));
+//        DataModel model = new FileDataModel(new File("metadata/data/libimseti/ratings.dat"));
+        DataModel model = new FileDataModel(new File("metadata/data/libimseti/ratings_u50000.dat"));
         return model;
     }
     
     public static DataModel getGenders() throws IOException {
-        DataModel model = new FileDataModel(new File("metadata/data/libimseti/gender.dat"));
+//        DataModel model = new FileDataModel(new File("metadata/data/libimseti/gender.dat"));
+        DataModel model = new FileDataModel(new File("metadata/data/libimseti/gender_u50000.dat"));
         return model;
     }
+    
+    
     
     
 }
